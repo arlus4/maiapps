@@ -15,8 +15,34 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
+
+Route::get('/verify-otp', function () {
+    return view('otp');
+})->name('otp');
+
+Route::get('/beranda', function () {
+    return view('beranda');
+})->name('beranda');
+
+Route::get('/daftar-menu', function () {
+    return view('daftar-menu');
+})->name('daftarMenu');
+
+Route::get('/daftar-menu/{idVarian}', function () {
+    return view('varian-menu');
+})->name('varianMenu');
+
+Route::get('/gerai-maitea', function () {
+    return view('gerai-maitea');
+})->name('geraiMaitea');
+
+Route::get('/riwayat-transaksi', function () {
+    return view('riwayat-transaksi');
+})->name('riwayatTransaksi');
+
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
