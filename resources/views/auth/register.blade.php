@@ -1,52 +1,53 @@
-<x-guest-layout>
-    <form method="POST" action="{{ route('register') }}">
-        @csrf
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Maitea Apps Nusantara</title>
 
-        <!-- Name -->
-        <div>
-            <x-input-label for="name" :value="__('Name')" />
-            <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
-            <x-input-error :messages="$errors->get('name')" class="mt-2" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css">
+        <link rel="stylesheet" href="{{ asset('assets/css/responsive.css') }}">
+    </head>
+    <body>
+        <div id="bgAll">
+            <div class="app-container">
+                <div class="css-cnm2slja">
+                    <div class="css-pojkf2n">
+                        <div class="d-flex css-cnm2nks align-items-center">
+                            <i class="fas fa-arrow-left" style="cursor: pointer;" onclick="window.location.href='login'"></i>
+                            <span class="ms-3 fw-bold">Daftar MaiApps</span>
+                        </div>
+                    </div>
+                    <div class="css-cnm2nks">
+                        <span class="css-cnbjs2a">
+                            Untuk mendaftarkan No. HP Anda, silakan isi No. HP dan password Anda pada kolom di bawah ini.<br><br>
+                            Setelah itu, klik tombol 'Kirim OTP' untuk menerima Kode OTP yang akan dikirimkan ke nomor HP tersebut.<br><br>
+                            Selanjutnya, masukkan Kode OTP yang telah Anda terima pada kolom 'Kode OTP', lalu tekan tombol 'Daftar'.Jika Anda ingin membatalkan, klik tombol 'Batal'.
+                        </span>
+                    </div>
+                    <div class="css-cnm2nks mt-3">
+                        <form action="">
+                            <div class="form-group">
+                                <label for="">Nama Pengguna</label>
+                                <input type="text" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="">No Telpon</label>
+                                <input type="number" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Password</label>
+                                <input type="password" class="form-control">
+                            </div>
+                        </form>
+                        <a href="{{ route('otp') }}" class="btn css-fnk3sns mt-4">Daftar</a>
+                        <p class="text-center mt-3">Sudah punya akun? <u onclick="window.location.href='login'" style="color: #00a869;cursor: pointer;">Masuk</u></p>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <!-- Email Address -->
-        <div class="mt-4">
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
-        </div>
-
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
-
-            <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="new-password" />
-
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
-        </div>
-
-        <!-- Confirm Password -->
-        <div class="mt-4">
-            <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
-
-            <x-text-input id="password_confirmation" class="block mt-1 w-full"
-                            type="password"
-                            name="password_confirmation" required autocomplete="new-password" />
-
-            <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
-        </div>
-
-        <div class="flex items-center justify-end mt-4">
-            <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('login') }}">
-                {{ __('Already registered?') }}
-            </a>
-
-            <x-primary-button class="ml-4">
-                {{ __('Register') }}
-            </x-primary-button>
-        </div>
-    </form>
-</x-guest-layout>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    </body>
+</html>

@@ -42,6 +42,18 @@ Route::get('/riwayat-transaksi', function () {
     return view('riwayat-transaksi');
 })->name('riwayatTransaksi');
 
+Route::get('/bonus-maitea', function () {
+    return view('bonus-maitea');
+})->name('bonusMaitea');
+
+Route::get('/tukar-poin', function () {
+    return view('tukar-poin');
+})->name('tukarPoin');
+
+Route::get('/artikel/mengenal-jenis-dan-manfaat-teh-untuk-kesehatan-tubuh', function () {
+    return view('detail-artikel');
+})->name('detailArtikel');
+
 
 
 Route::get('/dashboard', function () {
