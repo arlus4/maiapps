@@ -23,14 +23,14 @@
                     <div class="css-cjk2nso">
                         <div class="w-100 me-0 ms-0 css-bnyu2hjs">
                             <div style="padding-bottom: 100%"></div>
-                            <div class="css-q1image css-abfull" style="background-size: cover; background-position: 50% 50%; background-image: url('../assets/images/teh_1.png');"></div>
+                            <div class="css-q1image css-abfull" style="background-size: cover; background-position: 50% 50%; background-image: url('https://order.tokoseru.com/{{$getDetailMenu->path_thumbnail}}');"></div>
                         </div>
                     </div>
                     <div class="css-ghj9cma">
-                        <h4 class="css-nameprod" style="font-size: 25px;">MaiTea Nusantara Leci</h4>
+                        <h4 class="css-nameprod" style="font-size: 25px;">{{ $getDetailMenu->nama_produk }}</h4>
                         <h4 class="css-propric" style="font-size: 25px;">
                             <div class="css-prodnormal fw-bold">
-                                <span>Rp 30.000</span>
+                                <span>Rp {{ str_replace(',','.',number_format($getDetailMenu->harga)) }}</span>
                             </div>
                         </h4>
                     </div>
@@ -39,13 +39,8 @@
                     <div>
                         <div style="font-size: 12px;">
                             <div class="css-titxnk2 pb-4">
-                                <h4 class="css-nameprod">Deskripsi MaiTea Nusantara Leci</h4>
-                                <span>
-                                    Nikmati kesegaran tropis dalam setiap tegukan MaiTea Nusantara Leci, sebuah harmoni 
-                                    rasa yang memadukan keaslian leci Nusantara dengan racikan teh premium. Temukan oase di tengah hari Anda!<br><br>
-                                    Rasakan esensi leci yang lembut dan aroma menenangkan dalam MaiTea Nusantara Leci. Setiap cangkirnya adalah undangan 
-                                    untuk merasakan kekayaan rasa dari kebun buah leci terpilih di Nusantara.
-                                </span>
+                                <h4 class="css-nameprod">Deskripsi {{ $getDetailMenu->nama_produk }}</h4>
+                                <span>{{ $getDetailMenu->deskripsi }}</span>
                             </div>
                         </div>
                     </div>

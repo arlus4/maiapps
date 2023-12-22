@@ -13,6 +13,19 @@
         <div id="bgAll">
             <div class="css-vbm2ekan">
                 <div class="css-hcnk2ns">
+                    @if ($message = Session::get('success'))
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            <strong>Yeaayy, </strong> {{ $message }} {{ Auth::user()->username }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    @endif
+
+                    @if ($message = Session::get('error'))
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <strong>Oopss,</strong> {{ $message }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    @endif
                     <div class="css-fn2dkna">
                         <img width="250" style="margin-top: 220px;margin-bottom:105px" src="{{ asset('assets/images/maitea_nusantara_landing.png') }}">
                     </div>
@@ -25,7 +38,6 @@
             </div>
         </div>
 
-
         <div class="modal fade" id="modalMasuk">
             <div class="modal-dialog css-dn5jdla" style="height: 55vh;">
                 <div class="modal-content css-kv2nksik">
@@ -34,18 +46,19 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body px-3">
-                        <form action="">
+                        <form action="{{ route('loginUser') }}" method="post">
+                            @csrf
                             <div class="form-group mb-2">
-                                <label for="">Username</label>
-                                <input type="text" class="form-control">
+                                <label>No Telpon</label>
+                                <input type="text" name="no_hp" class="form-control">
                             </div>
                             <div class="form-group">
-                                <label for="">Password</label>
-                                <input type="password" class="form-control">
+                                <label>Password</label>
+                                <input type="password" name="password" class="form-control">
                             </div>
                             <p style="text-align: right;color: #00a869;">Lupa Password?</p>
+                            <button type="submit" class="btn css-fnk3sns text-white mt-4">Masuk</button>
                         </form>
-                        <a href="{{ route('beranda') }}" class="btn css-fnk3sns mt-4">Masuk</a>
                         <p class="text-center mt-3">Belum punya akun? <u onclick="window.location.href='register'" style="color: #00a869;">Daftar</u></p>
                     </div>
                 </div>

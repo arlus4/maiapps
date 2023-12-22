@@ -23,7 +23,7 @@
                         Bonus MaiTea
                     </div>
                 </div>
-                <div class="css-gh2snka">
+                <div class="css-gh2snka" style="position: relative;">
                     <div class="css-slk2ndm">
                         <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
                             <li class="nav-item" role="presentation">
@@ -44,106 +44,61 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="css-v2hksop mb-1">
-                                    <img class="img-fluid" src="{{ asset('assets/images/voucher_1_tes.png') }}" alt="">
-                                    <div>
-                                        <div class="d-flex justify-content-between align-items-center mt-3">
-                                            <h4 style="font-size: 13px;">Kode Outlet</h4>
-                                            <h4 style="font-size: 13px;">5X8047AA8E3843BS</h4>
+                                @foreach($getBonusVoucher as $bonusVoucher)
+                                    <div class="css-v2hksop mb-1">
+                                        <img class="img-fluid" src="{{ asset('assets/images/voucher_1_tes.png') }}" alt="">
+                                        <div>
+                                            <div class="d-flex justify-content-between align-items-center mt-3">
+                                                <h4 style="font-size: 13px;">Kode Outlet</h4>
+                                                <h4 style="font-size: 13px;">{{ $bonusVoucher->voucher_code }}</h4>
+                                            </div>
+                                            <h4 class="css-propric mb-0" style="font-size: 12px;">
+                                                <button type="button" class="border-0 bg-white p-0" data-bs-toggle="modal" data-bs-target="#modalMaps">
+                                                    <div class="d-flex css-prodnormal align-items-center fw-bold">
+                                                        <img width="20" src="{{ asset('assets/images/map.png') }}">
+                                                        <span style="margin-left: 8px;font-size: 15px;">Lihat Maps</span>
+                                                    </div>
+                                                </button>
+                                            </h4>
                                         </div>
-                                        <h4 class="css-propric mb-0" style="font-size: 12px;">
-                                            <button type="button" class="border-0 bg-white p-0" data-bs-toggle="modal" data-bs-target="#modalMaps">
-                                                <div class="d-flex css-prodnormal align-items-center fw-bold">
-                                                    <img width="20" src="{{ asset('assets/images/map.png') }}">
-                                                    <span style="margin-left: 8px;font-size: 15px;">Lihat Maps</span>
-                                                </div>
-                                            </button>
-                                        </h4>
                                     </div>
-                                </div>
-                                <div class="css-v2hksop">
-                                    <img class="img-fluid" src="{{ asset('assets/images/voucher_1_tes.png') }}" alt="">
-                                    <div>
-                                        <div class="d-flex justify-content-between align-items-center mt-3">
-                                            <h4 style="font-size: 13px;">Kode Outlet</h4>
-                                            <h4 style="font-size: 13px;">5X8047AA8E3843BS</h4>
-                                        </div>
-                                        <h4 class="css-propric mb-0" style="font-size: 12px;">
-                                            <button type="button" class="border-0 bg-white p-0" data-bs-toggle="modal" data-bs-target="#modalMaps">
-                                                <div class="d-flex css-prodnormal align-items-center fw-bold">
-                                                    <img width="20" src="{{ asset('assets/images/map.png') }}">
-                                                    <span style="margin-left: 8px;font-size: 15px;">Lihat Maps</span>
-                                                </div>
-                                            </button>
-                                        </h4>
-                                    </div>
-                                </div>
+                                @endforeach
                             </div>
                             <div class="tab-pane fade" id="targetTukarPoin" role="tabpanel" aria-labelledby="targetTukarPoin-tab" style="padding: 0px 16px 0px 0px;">
-                                <div class="css-v2hksop">
-                                    <div class="css-yuij6na">
-                                        <div class="css-vnmjd2j">
-                                            <div>
-                                                <div class="css-asdertd2">
-                                                    <div class="css-hj8kopa">
-                                                        <img class="img-fluid" width="24" src="{{ asset('assets/images/riwayat_ic.png') }}">
-                                                    </div>
-                                                    <div class="css-lkgd2bs">
-                                                        <h3 class="css-belihdf2">Riwayat Voucher</h3>
-                                                        <h4 class="css-kf3hkdn">Tanggal Claim : 24 September 2023</h4>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <hr style="margin: 12px 0px;height: 1px; background: #212121;">
-                                    <div class="mt-4">
-                                        <div class="d-flex justify-content-between align-items-center">
-                                            <h4 style="font-size: 13px;">Kode Voucher</h4>
-                                            <h4 style="font-size: 13px;">123456789</h4>
-                                        </div>
-                                        <div class="d-flex justify-content-between align-items-center">
-                                            <h4 style="font-size: 13px;">Nama Outlet</h4>
-                                            <h4 style="font-size: 13px;">MaiTea Villa Indah Bogor 5</h4>
-                                        </div>
-                                        <div class="d-flex justify-content-between align-items-center">
-                                            <h4 style="font-size: 13px;">Kode Outlet</h4>
-                                            <h4 style="font-size: 13px;">88888888999999</h4>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="css-v2hksop">
-                                    <div class="css-yuij6na">
-                                        <div class="css-vnmjd2j">
-                                            <div>
-                                                <div class="css-asdertd2">
-                                                    <div class="css-hj8kopa">
-                                                        <img class="img-fluid" width="24" src="{{ asset('assets/images/riwayat_ic.png') }}">
-                                                    </div>
-                                                    <div class="css-lkgd2bs">
-                                                        <h3 class="css-belihdf2">Riwayat Voucher</h3>
-                                                        <h4 class="css-kf3hkdn">Tanggal Claim : 24 September 2023</h4>
+                                @foreach($getRiwayatVoucher as $riwayatVoucher)
+                                    <div class="css-v2hksop">
+                                        <div class="css-yuij6na">
+                                            <div class="css-vnmjd2j">
+                                                <div>
+                                                    <div class="css-asdertd2">
+                                                        <div class="css-hj8kopa">
+                                                            <img class="img-fluid" width="24" src="{{ asset('assets/images/riwayat_ic.png') }}">
+                                                        </div>
+                                                        <div class="css-lkgd2bs">
+                                                            <h3 class="css-belihdf2">Riwayat Voucher</h3>
+                                                            <h4 class="css-kf3hkdn">Tanggal Claim : {{ $riwayatVoucher->tanggal_claim }}</h4>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
+                                        <hr style="margin: 12px 0px;height: 1px; background: #212121;">
+                                        <div class="mt-4">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <h4 style="font-size: 13px;">Kode Voucher</h4>
+                                                <h4 style="font-size: 13px;">123456789</h4>
+                                            </div>
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <h4 style="font-size: 13px;">Nama Outlet</h4>
+                                                <h4 style="font-size: 13px;">MaiTea Villa Indah Bogor 5</h4>
+                                            </div>
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <h4 style="font-size: 13px;">Kode Outlet</h4>
+                                                <h4 style="font-size: 13px;">88888888999999</h4>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <hr style="margin: 12px 0px;height: 1px; background: #212121;">
-                                    <div class="mt-4">
-                                        <div class="d-flex justify-content-between align-items-center">
-                                            <h4 style="font-size: 13px;">Kode Voucher</h4>
-                                            <h4 style="font-size: 13px;">123456789</h4>
-                                        </div>
-                                        <div class="d-flex justify-content-between align-items-center">
-                                            <h4 style="font-size: 13px;">Nama Outlet</h4>
-                                            <h4 style="font-size: 13px;">MaiTea Villa Indah Bogor 5</h4>
-                                        </div>
-                                        <div class="d-flex justify-content-between align-items-center">
-                                            <h4 style="font-size: 13px;">Kode Outlet</h4>
-                                            <h4 style="font-size: 13px;">88888888999999</h4>
-                                        </div>
-                                    </div>
-                                </div>
+                                @endforeach
                             </div>
                         </div>
                     </div>

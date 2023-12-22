@@ -1,12 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Handjet:wght@300&family=Inter:wght@300&family=Montserrat:wght@400;500;600&family=Poppins:wght@400;700&display=swap');
 
-@media screen and (max-width: 768px) {
+@media only screen and (min-width: 1280px) and (max-width: 1400px){
+    .css-dn5jdlb{
+        right: 17px!important;
+    }
+}
+@media only screen and (max-width: 768px) {
     .css-ndkf2nsk{
         margin: 0px auto!important;
     }
 }
 
-@media screen and (max-width: 360px) {
+@media only screen and (max-width: 360px) {
     .css-ndkf2nsk{
         margin: 0px auto!important;
     }
@@ -488,7 +493,7 @@ body{
 .css-v2hksop{
     display: block;
     position: relative;
-    overflow: hidden;
+    /* overflow: hidden; */
     background-color: #fff;
     border-radius: 8px;
     padding: 12px;
@@ -589,7 +594,18 @@ body{
     left: 0px;
     margin: 0px auto;
     overflow: auto;
-    height: 50vh;
+    /* height: 50vh; */
+    height: auto;
+}
+.css-dn5jdlb{
+    position: absolute;
+    z-index: 1012;
+    bottom: 0px;
+    right: 0px;
+    left: 0px;
+    margin: 0px auto;
+    overflow: auto;
+    height: auto;
 }
 .css-kv2nksik{
     background: #fff;
@@ -758,4 +774,126 @@ body{
     overflow: hidden;
     text-overflow: ellipsis;
     overflow-wrap: break-word;
+}
+.css-11e6p2x{
+    position: fixed;
+    bottom: 0px;
+    z-index: 20;
+    display: flex;
+    flex-flow: row;
+    align-items: flex-start;
+    height: 50px;
+    width: 100%;
+    max-width: 500px;
+    background-color: #fff;
+    box-shadow: rgba(109, 117, 136, 0.16) 0px -2px 4px 0px;
+    margin: 0px auto;
+}
+.css-90nfwk2{
+    position: relative;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-around;
+    -webkit-box-align: center;
+    align-items: center;
+    color: #333;
+    text-decoration: none;
+    height: 100%;
+    padding: 2px 0px 0px;
+    flex: 1 1 25%;
+    width: 25%;
+    max-width: 25%;
+}
+.css-90nfwk2:hover{
+    color: #00a869;
+}
+.css-8fn2ns0{
+    display: inline-block;
+    height: 13px;
+}
+.css-8h87hbd{
+    font-weight: 500;
+    font-size: 10px;
+    line-height: 16px;
+    white-space: nowrap;
+}
+.css-99fn2kns{
+    text-align: center;
+    padding: 0px 16px 0px 0px;
+}
+.css-99fn2kns .css-fjk00ans{
+    margin-bottom: 24px;
+}
+.css-fjk00ans{
+    position: relative;
+    display: inline-block;
+    opacity: 1;
+    border: 0px;
+    margin: 0px;
+    padding: 0px;
+    width: initial;
+    height: initial;
+    background: none;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+.css-n88dkna.css-90ndqnk{
+    max-width: 100%;
+}
+.css-n88dkna{
+    display: block;
+    width: initial;
+    height: initial;
+    opacity: 1;
+    border: 0px;
+    margin: 0px;
+    padding: 0px;
+    background: none;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+.css-m2mska7c{
+    display: block;
+    background: none;
+    width: initial;
+    height: initial;
+    max-width: 100%;
+    opacity: 1;
+    border: 0px;
+    margin: 0px;
+    padding: 0px;
+}
+.css-7db7dabj{
+    object-fit: contain;
+    position: absolute;
+    inset: 0px;
+    width: 0px;
+    height: 0px;
+    min-width: 100%;
+    max-width: 100%;
+    min-height: 100%;
+    max-height: 100%;
+    display: block;
+    padding: 0px;
+    margin: auto;
+    border: none;
+    box-sizing: border-box;
+}
+.css-99fn2kns .css-d92nsklk{
+    max-width: 100%;
+    margin: auto;
+}
+.css-kdj90mam{
+    display: block;
+    position: relative;
+    font-weight: 600;
+    color: #212121;
+    line-height: 14px;
+    font-size: 1.3rem;
+}
+.css-wrui2nsn{
+    margin-top: 10px!important;
+    font-weight: 400;
+    color: #333;
+    font-size: 1rem;
 }
