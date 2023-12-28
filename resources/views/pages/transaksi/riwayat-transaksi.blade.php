@@ -196,7 +196,7 @@
                     e.preventDefault();
                     
                     var formData = $(this).serialize();
-                    var url      = "/filter-riwayat-transaksi/";
+                    var url      = "{{ url('/filter-riwayat-transaksi') }}";
 
                     $.ajax({
                         url: url,

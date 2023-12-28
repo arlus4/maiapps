@@ -39,9 +39,9 @@ Route::get('/artikel/mengenal-jenis-dan-manfaat-teh-untuk-kesehatan-tubuh', func
 
 
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
 
 
 
