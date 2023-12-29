@@ -8,6 +8,7 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
         <link rel="stylesheet" href="{{ asset('assets/css/plugins.bundle.css') }}" type="text/css"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css">
+        <link rel="stylesheet" href="https://unpkg.com/placeholder-loading/dist/css/placeholder-loading.min.css">
         <link rel="stylesheet" href="{{ asset('assets/css/responsive.css') }}">
     </head>
     <body>
@@ -76,6 +77,11 @@
                                         <button type="submit" class="css-fnk3sns text-center border-0 mt-0 w-25" style="font-size: 13px;border-radius:12px; padding: 6px;height: 32px;">Cari</button>
                                     </div>
                                 </form>
+
+                                <div class="mt-3" id="dynamic_content">
+                    
+                                </div>
+
                                 <div class="css-jf8nd2k css-67db1jb">
                                     @foreach($getDaftarPembelian as $daftarPembelian)
                                         <section class="css-v2hksop css-88nckanl">
@@ -192,8 +198,60 @@
         <script src="{{ asset('assets/js/plugins.bundle.js') }}"></script>
         <script>
             $(document).ready(function () {
+                setTimeout(function(){
+                    load_content()
+                }, 2000);
+
+                function make_skeleton() {
+                    var output = '';
+
+                    for (var count = 0; count < 3; count++) {
+                        output += `
+                            <div class="row">
+                                <div class="col-12 col-sm-12">
+                                    <div class="ph-item mb-0" style="border-radius: 8px;">
+                                        <div class="ph-col-12">
+                                            <div class="ph-row">
+                                                <div class="ph-col-2"></div>
+                                                <div class="ph-col-10 empty"></div>
+                                                <div class="ph-col-2"></div>
+                                                <div class="ph-col-10 empty"></div>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="ph-row">
+                                                <div class="ph-col-4"></div>
+                                                <div class="ph-col-4 empty"></div>
+                                                <div class="ph-col-4"></div>
+                                                <div class="ph-col-4"></div>
+                                                <div class="ph-col-4 empty"></div>
+                                                <div class="ph-col-4"></div>
+                                                <div class="ph-col-4"></div>
+                                                <div class="ph-col-4 empty"></div>
+                                                <div class="ph-col-4"></div>
+                                                <div class="ph-col-4"></div>
+                                                <div class="ph-col-4 empty"></div>
+                                                <div class="ph-col-4"></div>
+                                            </div>
+                                            <hr>
+                                            <div class="ph-row">
+                                                <div class="ph-col-4"></div>
+                                                <div class="ph-col-8 empty"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                    }
+                    return output;
+                }
+
                 $("#filterForm").submit(function (e) {
                     e.preventDefault();
+
+                    $('#dynamic_content').html(make_skeleton());
+                    $('#dynamic_content').show();
                     
                     var formData = $(this).serialize();
                     var url      = "{{ url('/filter-riwayat-transaksi') }}";
@@ -203,6 +261,7 @@
                         type: "POST",
                         data: formData,
                         success: function (data) {
+                            $('#dynamic_content').hide();
                             $('.css-88nckanl').hide();
                             $('.css-67db1jb').show();
                             $(".css-67db1jb").empty();
