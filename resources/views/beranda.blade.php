@@ -20,21 +20,13 @@
                     <i class="fas fa-bars css-icon"></i>
                 </header>
 
-                <form method="POST" action="{{ route('logout') }}">
-                    @csrf
-
-                    <button type="submit" class="btn waves-effect waves-light btn-danger"
-                            style="float:right;">
-                        Logout
-                    </button>
-                </form>
                 <div class="px-4 py-1 mb-3">
                     <div class="user-greeting text-white mt-2">
                         <p class="css-cnf2kns mb-0">Selamat Datang,</p>
                         <div class="d-flex align-items-center">
-                            <h4 class="mb-0">{{ $getData->username }}</h4>
+                            <h4 class="mb-0" style="font-size: 1.25rem;">{{ $getData->username }}</h4>
                             <div class="ms-2 me-2">-</div>
-                            <h4 class="mb-0">{{ $getData->no_hp }}</h4>
+                            <h4 class="mb-0" style="font-size: 1.25rem;">{{ $getData->no_hp }}</h4>
                             <!-- <img class="css-fvjk2bks" src="{{ asset('assets/images/c3.png') }}"> -->
                         </div>
                     </div>
@@ -112,22 +104,26 @@
                             <p class="css-jf8kw2j"><u>Lainnya</u></p>
                         </div>
                         <div class="css-dnxjart mt-3">
-                            <a class="text-decoration-none text-dark" href="{{ route('detailArtikel') }}">
-                                <div class="css-cj2kjfl">
-                                    <div class="css-dnxjart">
-                                        <img class="rounded" height="58px;" src="{{ asset('assets/images/bg_teh_1.webp') }}">
-                                    </div>
-                                    <div class="css-dnxjart">
-                                        <div class="css-nfcpo2a" style="-webkit-line-clamp: 1;">Mengenal Jenis dan Manfaat Teh untuk Kesehatan Tubuh</div>
-                                        <div class="css-bn3jkdl" style="-webkit-line-clamp: 2;margin-top: 5px;">
-                                            Teh adalah minuman yang populer di seluruh dunia. Teh tersedia dalam berbagai jenis seperti teh hijau, 
-                                            teh hitam, teh putih, dan teh oolong. Setiap jenis teh memiliki karakteristik dan rasa yang berbeda.
-                                            Nah, tak hanya lezat dan menenangkan, nyatanya konsumsi teh juga memiliki beragam manfaat bagi kesehatan. Karena itu, ketahuilah apa saja jenis dan manfaat mengonsumsi teh dalam penjelasan berikut. 
+                            @foreach($getTopArticle as $topArticle)
+                                <a class="text-decoration-none text-dark" href="{{ route('detailArtikel') }}">
+                                    <div class="css-cj2kjfl">
+                                        <div class="css-dnxjart">
+                                            @if($topArticle->image_name == null)
+                                                <img class="rounded" height="58px;" src="{{ asset('assets/images/bg_null.png') }}">
+                                            @else
+                                                <img class="rounded" height="58px;" src="https://order.tokoseru.com/storage/artikel/content/{{ $topArticle->image_name }}">
+                                            @endif
+                                        </div>
+                                        <div class="css-dnxjart">
+                                            <div class="css-nfcpo2a" style="-webkit-line-clamp: 1;">{{ $topArticle->headline }}</div>
+                                            <div class="css-bn3jkdl" style="-webkit-line-clamp: 2;margin-top: 5px;">
+                                                {{ $topArticle->caption }}
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </a>
-                            <div class="css-cj2kjfl">
+                                </a>
+                            @endforeach
+                            <!-- <div class="css-cj2kjfl">
                                 <div class="css-dnxjart">
                                     <img class="rounded" height="58px;" src="{{ asset('assets/images/bg_teh_2.png') }}">
                                 </div>
@@ -152,7 +148,7 @@
                                     terkadang panaskan kembali sisa teh tadi malam di atas kompor atau di microwave. Amankah meminum sisa teh kemarin? Bisakah teh dihangatkan kembali?
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>
@@ -169,7 +165,7 @@
                         <i class="fas fa-map-marked-alt"></i>
                         <span class="css-8h87hbd">Gerai MaiTea</span>
                     </a>
-                    <a href="" class="css-90nfwk2">
+                    <a href="{{ route('profil') }}" class="css-90nfwk2">
                         <i class="fas fa-user-circle"></i>
                         <span class="css-8h87hbd">Profil</span>
                     </a>

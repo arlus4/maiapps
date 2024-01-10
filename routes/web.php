@@ -21,14 +21,6 @@ Route::get('/verify-otp', function () {
     return view('otp');
 })->name('otp');
 
-Route::get('/riwayat-transaksi', function () {
-    return view('riwayat-transaksi');
-})->name('riwayatTransaksi');
-
-Route::get('/bonus-maitea', function () {
-    return view('bonus-maitea');
-})->name('bonusMaitea');
-
 Route::get('/tukar-poin', function () {
     return view('tukar-poin');
 })->name('tukarPoin');
@@ -48,6 +40,7 @@ Route::get('/artikel/mengenal-jenis-dan-manfaat-teh-untuk-kesehatan-tubuh', func
 
 // Login
 Route::post('loginUser', [AuthController::class, 'login'])->name('loginUser');
+Route::get('check-authentication', [AuthController::class, 'checkAuthentication']);
 
 Route::middleware('auth')->group(function () {
 
@@ -65,6 +58,23 @@ Route::middleware('auth')->group(function () {
     Route::post('filter-riwayat-transaksi', [RiwayatTransaksiController::class, 'filterRiwayatTransaksi'])->name('filterRiwayatTransaksi');
 
     Route::get('bonus-maitea', [BonusController::class, 'bonusMaitea'])->name('bonusMaitea');
+    
+    Route::get('/profil', [ProfileController::class, 'profil'])->name('profil');
+    Route::get('/profil/settings', [ProfileController::class, 'profilSettings'])->name('profilSettings');
+    Route::get('/profil/ubah-foto', [ProfileController::class, 'profilUbahFoto'])->name('profilUbahFoto');
+    Route::get('/profil/ubah-nama', [ProfileController::class, 'profilUbahNama'])->name('profilUbahNama');
+    Route::get('/profil/ubah-birth-date', [ProfileController::class, 'profilUbahBirthDate'])->name('profilUbahBirthDate');
+    Route::get('/profil/ubah-jenis-kelamin', [ProfileController::class, 'profilUbahJenisKelamin'])->name('profilUbahJenisKelamin');
+    Route::get('/profil/ubah-alamat', [ProfileController::class, 'profilUbahAlamat'])->name('profilUbahAlamat');
+    Route::get('/profil/ubah-password', [ProfileController::class, 'profilUbahPassword'])->name('profilUbahPassword');
+    Route::get('/seputar-maiapps', [ProfileController::class, 'seputarMaiApps'])->name('seputarMaiApps');
+
+    Route::post('/store/ubah-foto', [ProfileController::class, 'storeUbahFoto'])->name('storeUbahFoto');
+    Route::post('/store/ubah-nama', [ProfileController::class, 'storeUbahNama'])->name('storeUbahNama');
+    Route::post('/store/ubah-birth-date', [ProfileController::class, 'storeUbahBirthDate'])->name('storeUbahBirthDate');
+    Route::post('/store/ubah-jenis-kelamin', [ProfileController::class, 'storeUbahJenisKelamin'])->name('storeUbahJenisKelamin');
+    Route::post('/store/ubah-alamat', [ProfileController::class, 'storeUbahAlamat'])->name('storeUbahAlamat');
+    Route::post('/store/ubah-password', [ProfileController::class, 'storeUbahPassword'])->name('storeUbahPassword');
 
 
     Route::get('user', [UserController::class, 'user'])->name('user');

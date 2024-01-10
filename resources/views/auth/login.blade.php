@@ -22,7 +22,7 @@
 
                     @if ($message = Session::get('error'))
                         <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                            <strong>Oopss,</strong> {{ $message }}
+                            <strong>Oops,</strong> {{ $message }}
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                         </div>
                     @endif
@@ -50,11 +50,11 @@
                             @csrf
                             <div class="form-group mb-2">
                                 <label>No Telpon</label>
-                                <input type="text" name="no_hp" class="form-control">
+                                <input type="text" name="no_hp" class="form-control" required>
                             </div>
                             <div class="form-group">
                                 <label>Password</label>
-                                <input type="password" name="password" class="form-control">
+                                <input type="password" name="password" class="form-control" required>
                             </div>
                             <p style="text-align: right;color: #00a869;">Lupa Password?</p>
                             <button type="submit" class="btn css-fnk3sns text-white mt-4">Masuk</button>

@@ -56,6 +56,7 @@
             </div>
         </div>
 
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
         <script>
@@ -68,7 +69,24 @@
 
             document.querySelector('.btnSelanjutnya').addEventListener('click', function() {
                 if (swiper.isEnd) {
-                    window.location.href = 'login';
+                    var url      = "{{ url('/check-authentication') }}";
+
+                    $.ajax({
+                        url: url,
+                        type: 'GET',
+                        success: function(response) {
+                            var authenticated = response.authenticated;
+
+                            if (authenticated) {
+                                window.location.href = '/beranda';
+                            } else {
+                                window.location.href = 'login';
+                            }
+                        },
+                        error: function(error) {
+                            console.error('Error checking authentication:', error);
+                        }
+                    });
                 } else {
                     swiper.slideNext();
                 }

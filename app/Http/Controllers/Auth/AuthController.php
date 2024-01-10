@@ -10,11 +10,11 @@ use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
+
     public function login(Request $request){
-        // dd($request);
         $request->validate([
-            'no_hp'      => ['required'],
-            'password'   => ['required'],
+            'no_hp'      => 'required',
+            'password'   => 'required',
         ]);
     
         $credentials = [
@@ -24,9 +24,17 @@ class AuthController extends Controller
         ];
     
         if (Auth::attempt($credentials)) {
-            return redirect('/beranda')->with(['success' => 'Selamat Datang']);
+            return redirect()->intended('/beranda')->with(['success' => 'Selamat Datang']);
         }
     
         return redirect()->back()->with(['error' => 'Silahkan Coba Lagi']);
     }
+
+    public function checkAuthentication()
+    {
+        $authenticated = Auth::check();
+
+        return response()->json(['authenticated' => $authenticated]);
+    }
+    
 }
