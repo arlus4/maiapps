@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\API;
 
-use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Validator;
 
 class AuthenticatedController extends Controller
@@ -39,8 +40,8 @@ class AuthenticatedController extends Controller
             return response()->json([
                 'status' => true,
                 'message' => "Login Berhasil, Selamat Datang",
-                'token' => $datauser->createToken('api-apps')->plainTextToken
-            ]);
+                'token' => $datauser->createToken('api-apps')->accessToken
+            ], 200);
         } else {
             return response()->json([
                 'status' => false,
@@ -51,18 +52,35 @@ class AuthenticatedController extends Controller
 
     public function logoutUser(Request $request)
     {
-        // Memeriksa apakah ada user yang sedang login
         $user = $request->user();
     
         if ($user) {
-            // Hapus token akses saat ini
-            $user->currentAccessToken()->delete();
+            // Revoke the token (menonaktifkan token pada table oauth_access_token)
+            $user->token()->revoke();
     
-            return response()->json(['message' => 'Berhasil Logout']);
+            return response()->json(['message' => 'Berhasil Logout'], 200);
         } else {
-            // Menangani situasi ketika tidak ada user yang login
             return response()->json(['message' => 'No authenticated user'], 401);
         }
     }
-    
+
+    public function refresh(Request $request)
+    {
+        $refreshToken = $request->input('refresh_token');
+
+        // Lakukan request ke Passport untuk mendapatkan token baru
+        $response = Http::asForm()->post(config('services.passport.login_endpoint'), [
+            'grant_type' => 'refresh_token',
+            'refresh_token' => $refreshToken,
+            'client_id' => config('services.passport.client_id'),
+            'client_secret' => config('services.passport.client_secret'),
+            'scope' => '',
+        ]);
+
+        if ($response->successful()) {
+            return $response->json();
+        } else {
+            return response()->json(['message' => 'Refresh token failed'], 401);
+        }
+    }
 }

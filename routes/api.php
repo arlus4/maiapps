@@ -16,8 +16,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::post('loginUser', [AuthenticatedController::class, 'loginUser']);
-Route::post('logoutUser', [AuthenticatedController::class, 'logoutUser'])->middleware('auth:sanctum');
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+Route::post('/refresh', [AuthenticatedController::class, 'refresh']);
+
+Route::middleware('auth:api')->group(function () {
+    Route::post('logoutUser', [AuthenticatedController::class, 'logoutUser']);
+});
+Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
