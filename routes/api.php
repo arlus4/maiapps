@@ -22,6 +22,7 @@ Route::post('/refresh', [AuthenticatedController::class, 'refresh']);
 
 Route::middleware('auth:api')->group(function () {
     Route::get('/beranda', [Api_BerandaController::class, 'beranda']);
+    Route::get('/detail-product/{sku}', [Api_BerandaController::class, 'detail_product']);
     Route::post('logoutUser', [AuthenticatedController::class, 'logoutUser']);
 });
 Route::middleware('auth:api')->get('/user', function (Request $request) {
