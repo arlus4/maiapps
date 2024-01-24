@@ -11,7 +11,7 @@ class Api_BerandaController extends Controller
 {
     public function beranda()
     {
-        $getUserDatas         = DB::select("SELECT username, no_hp FROM [maigroup].[dbo].[apps.display_name_user] ('".Auth::user()->pembeli_id."','".Auth::user()->no_hp."')");
+        $getUserDatas         = DB::select("SELECT username, no_hp, nama_alamat FROM [maigroup].[dbo].[apps.display_name_user] ('".Auth::user()->pembeli_id."','".Auth::user()->no_hp."')");
         $getUserPoints        = DB::select("SELECT reward FROM [maigroup].[dbo].[apps.display_total_point] ('".Auth::user()->pembeli_id."','".Auth::user()->no_hp."')");
         $getUserTotalCups     = DB::select("SELECT qty FROM [maigroup].[dbo].[apps.display_total_cup] ('".Auth::user()->pembeli_id."','".Auth::user()->no_hp."')");
         $getUserBanners       = DB::select("SELECT banner_code, image_name FROM [maigroup].[dbo].[apps.banner_promo] ('ALL')");
