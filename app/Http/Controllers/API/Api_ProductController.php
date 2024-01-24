@@ -8,13 +8,22 @@ use App\Http\Controllers\Controller;
 
 class Api_ProductController extends Controller
 {
-    public function detail_product($sku)
+    public function detail_product($slug)
     {
-        $getDetailProduct = DB::select("SELECT nama_produk, slug, harga, path_thumbnail, deskripsi FROM [maigroup].[dbo].[apps.produk_detail] ('1','".$sku."')");
-        $getDetailProduct = $getDetailProduct[0] ?? null;
+        $data = DB::table('ref_produks')
+            ->select(
+                'sku',
+                'nama_produk',
+                'harga',
+                'deskripsi',
+                'thumbnail',
+                'path_thumbnail'
+            )
+            ->where('slug', $slug)
+            ->first();
 
         return response()->json([
-            'detailProduct' => $getDetailProduct,
+            'detailProduct' => $data,
         ]);
     }
 }
