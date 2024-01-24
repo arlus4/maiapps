@@ -15,6 +15,7 @@ class Api_BerandaController extends Controller
         $getUserPoints        = DB::select("SELECT reward FROM [maigroup].[dbo].[apps.display_total_point] ('".Auth::user()->pembeli_id."','".Auth::user()->no_hp."')");
         $getUserTotalCups     = DB::select("SELECT qty FROM [maigroup].[dbo].[apps.display_total_cup] ('".Auth::user()->pembeli_id."','".Auth::user()->no_hp."')");
         $getUserBanners       = DB::select("SELECT banner_code, image_name FROM [maigroup].[dbo].[apps.banner_promo] ('ALL')");
+        $getListProduct       = DB::select("SELECT TOP 5 nama_produk, slug, harga, thumbnail, path_thumbnail FROM [maigroup].[dbo].[apps.produk_list] ('1')");
         $getTopArticles       = DB::select("SELECT TOP 5 * FROM [maigroup].[dbo].[apps.news_article] ()");
     
         // Pastikan untuk menangani kasus di mana hasil query mungkin kosong
@@ -27,6 +28,7 @@ class Api_BerandaController extends Controller
             'userPoint'           => $getUserPoint,
             'userTotalCup'        => $getUserTotalCup,
             'userBanner'          => $getUserBanners,
+            'listProduct'         => $getListProduct,
             'topArticle'          => $getTopArticles,
         ]);
     }
