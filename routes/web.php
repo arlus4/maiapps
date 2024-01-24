@@ -77,7 +77,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/store/ubah-password', [ProfileController::class, 'storeUbahPassword'])->name('storeUbahPassword');
 
 
-    Route::get('user', [UserController::class, 'user'])->name('user');
+    // Route::get('user', [UserController::class, 'user'])->name('user');
 
     // di komen sementara
     // Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

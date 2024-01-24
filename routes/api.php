@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\Api_BerandaController;
 use App\Http\Controllers\API\AuthenticatedController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -20,6 +21,7 @@ Route::post('loginUser', [AuthenticatedController::class, 'loginUser']);
 Route::post('/refresh', [AuthenticatedController::class, 'refresh']);
 
 Route::middleware('auth:api')->group(function () {
+    Route::get('/beranda', [Api_BerandaController::class, 'beranda']);
     Route::post('logoutUser', [AuthenticatedController::class, 'logoutUser']);
 });
 Route::middleware('auth:api')->get('/user', function (Request $request) {
