@@ -6,6 +6,7 @@ use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Check_Connection;
 use App\Http\Controllers\GeraiController;
 use App\Http\Controllers\BonusController;
+use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\BerandaController;
 use App\Http\Controllers\DaftarMenuController;
 use App\Http\Controllers\RiwayatTransaksiController;
@@ -58,6 +59,9 @@ Route::middleware('auth')->group(function () {
     Route::post('filter-riwayat-transaksi', [RiwayatTransaksiController::class, 'filterRiwayatTransaksi'])->name('filterRiwayatTransaksi');
 
     Route::get('bonus-maitea', [BonusController::class, 'bonusMaitea'])->name('bonusMaitea');
+
+    Route::get('daftar-article', [ArticleController::class, 'daftarArticle'])->name('daftarArticle');
+    Route::get('detail-article/{news_code}', [ArticleController::class, 'detailArticle'])->name('detailArticle');
     
     Route::get('/profil', [ProfileController::class, 'profil'])->name('profil');
     Route::get('/profil/settings', [ProfileController::class, 'profilSettings'])->name('profilSettings');

@@ -105,7 +105,7 @@
                         </div>
                         <div class="css-dnxjart mt-3">
                             @foreach($getTopArticle as $topArticle)
-                                <a class="text-decoration-none text-dark" href="{{ route('detailArtikel') }}">
+                                <a class="text-decoration-none text-dark" href="{{ route('detailArticle', ['news_code' => $topArticle->news_code]) }}">
                                     <div class="css-cj2kjfl">
                                         <div class="css-dnxjart">
                                             @if($topArticle->image_name == null)
