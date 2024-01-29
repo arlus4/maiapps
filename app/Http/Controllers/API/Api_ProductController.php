@@ -22,8 +22,18 @@ class Api_ProductController extends Controller
             ->where('slug', $slug)
             ->first();
 
-        return response()->json([
-            'detailProduct' => $data,
-        ]);
+        if ($data != null) {
+            return response()->json([
+                'success' => true,
+                'code'    => 200,
+                'detailProduct' => $data,
+            ]);
+        } else {
+            return response()->json([
+                'status'    => 'failed',
+                'message'   => 'Product not found',
+                'code'      => 404
+            ], 404);
+        }
     }
 }
