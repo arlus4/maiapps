@@ -8,6 +8,34 @@ use App\Http\Controllers\Controller;
 
 class Api_ProductController extends Controller
 {
+    public function list_product()
+    {
+        $data = DB::table('ref_produks')
+            ->select(
+                'slug',
+                'sku',
+                'nama_produk',
+                'harga',
+                'deskripsi',
+                'thumbnail',
+                'path_thumbnail'
+            )
+            ->get();
+
+        if ($data != null) {
+            return response()->json([
+                'success' => true,
+                'code'    => 200,
+                'product' => $data,
+            ]);
+        } else {
+            return response()->json([
+                'status'    => 'failed',
+                'message'   => 'Product not found',
+                'code'      => 404
+            ], 404);
+        }
+    }
     public function detail_product($slug)
     {
         $data = DB::table('ref_produks')
