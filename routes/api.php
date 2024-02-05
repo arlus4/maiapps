@@ -21,14 +21,15 @@ use App\Http\Controllers\API\AuthenticatedController;
 Route::post('loginUser', [AuthenticatedController::class, 'loginUser']);
 
 Route::post('/refresh', [AuthenticatedController::class, 'refresh']);
+
 Route::get('/article', [Api_ArtikelController::class, 'article']);
 Route::get('/detail-article/{news_code}', [Api_ArtikelController::class, 'detail_article']);
 
 Route::get('/list-product', [Api_ProductController::class, 'list_product']);
+Route::get('/detail-product/{slug}', [Api_ProductController::class, 'detail_product']);
 
 Route::middleware('auth:api')->group(function () {
     Route::get('/beranda', [Api_BerandaController::class, 'beranda']);
-    Route::get('/detail-product/{slug}', [Api_ProductController::class, 'detail_product']);
     Route::post('logoutUser', [AuthenticatedController::class, 'logoutUser']);
 });
 Route::middleware('auth:api')->get('/user', function (Request $request) {

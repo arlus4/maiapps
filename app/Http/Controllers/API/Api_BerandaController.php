@@ -11,7 +11,8 @@ class Api_BerandaController extends Controller
 {
     public function beranda()
     {
-        $getUserDatas         = DB::select("SELECT username, no_hp, nama_alamat FROM [maigroup].[dbo].[apps.display_name_user] ('".Auth::user()->pembeli_id."','".Auth::user()->no_hp."')");
+        $getDataBanner        = DB::table('banner_promo')->select('banner_code', 'banner_name', 'description', 'path', 'isall', 'start_date', 'end_date')->get();
+        $getUserDatas         = DB::select("SELECT name, email, no_hp, nama_alamat, avatar, path_avatar FROM [maigroup].[dbo].[apps.display_name_user] ('".Auth::user()->pembeli_id."','".Auth::user()->no_hp."')");
         $getUserPoints        = DB::select("SELECT reward FROM [maigroup].[dbo].[apps.display_total_point] ('".Auth::user()->pembeli_id."','".Auth::user()->no_hp."')");
         $getUserTotalCups     = DB::select("SELECT qty FROM [maigroup].[dbo].[apps.display_total_cup] ('".Auth::user()->pembeli_id."','".Auth::user()->no_hp."')");
         $getUserBanners       = DB::select("SELECT banner_code, image_name FROM [maigroup].[dbo].[apps.banner_promo] ('ALL')");
@@ -26,10 +27,11 @@ class Api_BerandaController extends Controller
         return response()->json([
             'data'                => $getData,
             'userPoint'           => $getUserPoint,
+            'dataBanner'          => $getDataBanner,
             'userTotalCup'        => $getUserTotalCup,
             'userBanner'          => $getUserBanners,
             'listProduct'         => $getListProduct,
-            'topArticle'          => $getTopArticles,
+            'topArticle'          => $getTopArticles
         ]);
     }
     
