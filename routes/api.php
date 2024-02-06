@@ -28,6 +28,8 @@ Route::get('/detail-article/{news_code}', [Api_ArtikelController::class, 'detail
 Route::get('/list-product', [Api_ProductController::class, 'list_product']);
 Route::get('/detail-product/{slug}', [Api_ProductController::class, 'detail_product']);
 
+Route::get('/gerai', [Api_BerandaController::class, 'gerai']);
+
 Route::middleware('auth:api')->group(function () {
     Route::get('/beranda', [Api_BerandaController::class, 'beranda']);
     Route::post('logoutUser', [AuthenticatedController::class, 'logoutUser']);

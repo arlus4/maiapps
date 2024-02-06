@@ -35,4 +35,43 @@ class Api_BerandaController extends Controller
         ]);
     }
     
+    public function gerai()
+    {
+        $data = DB::table('outlets')
+                    ->select(
+                        'outlets.outlet_id',
+                        'outlets.nama_outlet',
+                        'outlets.project_id',
+                        'outlets.slug',
+                        'outlets.no_hp',
+                        'outlets.image_name',
+                        'outlets.path',
+                        'alamat_outlets.alamat_detail',
+                        'alamat_outlets.kodepos',
+                        'alamat_outlets.map_location',
+                        'ref_kelurahan.nama_kelurahan',
+                        'ref_kecamatan.nama_kecamatan',
+                        'ref_kotakab.nama_kotakab'
+                    )
+                    ->leftJoin('alamat_outlets', 'outlets.outlet_id', 'alamat_outlets.outlet_id')
+                    ->leftJoin('ref_kelurahan', 'alamat_outlets.kode_kelurahan', 'ref_kelurahan.kode_kelurahan')
+                    ->leftJoin('ref_kecamatan', 'alamat_outlets.kode_kecamatan', 'ref_kecamatan.kode_kecamatan')
+                    ->leftJoin('ref_kotakab', 'alamat_outlets.kode_kotakab', 'ref_kotakab.kode_kotakab')
+                    ->where('is_verified', 'true')
+                    ->get();
+
+        if ($data != null){
+            return response()->json([
+                'status'    => 'success',
+                'code'      => 200,
+                'gerai'     => $data,
+            ], 200);
+        } else {
+            return response()->json([
+                'status'    => 'failed',
+                'message'   => 'Gerai not found',
+                'code'      => 404
+            ], 404);
+        }
+    }
 }
