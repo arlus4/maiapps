@@ -26,7 +26,7 @@ class Api_TransaksiController extends Controller
             return response()->json([
                 'status'    => 'success',
                 'code'      => 200,
-                'gerai'     => $data,
+                'voucher'   => $data,
             ], 200);
         } else {
             return response()->json([
