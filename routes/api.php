@@ -23,8 +23,6 @@ Route::post('loginUser', [AuthenticatedController::class, 'loginUser']);
 
 Route::post('/refresh', [AuthenticatedController::class, 'refresh']);
 
-Route::get('/list-voucher', [Api_TransaksiController::class, 'list_voucher']);
-
 Route::get('/article', [Api_ArtikelController::class, 'article']);
 Route::get('/detail-article/{news_code}', [Api_ArtikelController::class, 'detail_article']);
 
@@ -35,6 +33,7 @@ Route::get('/gerai', [Api_BerandaController::class, 'gerai']);
 
 Route::middleware('auth:api')->group(function () {
     Route::get('/beranda', [Api_BerandaController::class, 'beranda']);
+    Route::get('/list-voucher', [Api_TransaksiController::class, 'list_voucher']);
     Route::post('logoutUser', [AuthenticatedController::class, 'logoutUser']);
 });
 Route::middleware('auth:api')->get('/user', function (Request $request) {
