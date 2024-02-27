@@ -17,7 +17,7 @@ class Api_TransaksiController extends Controller
             // Tangani kasus di mana tidak ada pengguna yang login
             return response()->json(['error' => 'User not authenticated'], 401);
         }
-        
+
         $pembeliId = $user->pembeli_id;
 
         $data = DB::table('log_bonus')->where('pembeli_id', $pembeliId)->where('is_gift', 0)->get();
@@ -31,7 +31,7 @@ class Api_TransaksiController extends Controller
         } else {
             return response()->json([
                 'status'    => 'failed',
-                'message'   => 'Gerai not found',
+                'message'   => 'Bonus not found',
                 'code'      => 404
             ], 404);
         }
