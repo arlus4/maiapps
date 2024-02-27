@@ -11,7 +11,16 @@ class Api_TransaksiController extends Controller
 {
     public function list_voucher()
     {
-        $data = DB::table('log_bonus')->where('pembeli_id', Auth::user()->pembeli_id)->where('is_gift', 0)->get();
+        $user = Auth::user();
+
+        if ($user === null) {
+            // Tangani kasus di mana tidak ada pengguna yang login
+            return response()->json(['error' => 'User not authenticated'], 401);
+        }
+        
+        $pembeliId = $user->pembeli_id;
+
+        $data = DB::table('log_bonus')->where('pembeli_id', $pembeliId)->where('is_gift', 0)->get();
 
         if ($data != null){
             return response()->json([
