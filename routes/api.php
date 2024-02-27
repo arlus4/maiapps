@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\Api_ArtikelController;
 use App\Http\Controllers\API\Api_BerandaController;
 use App\Http\Controllers\API\Api_ProductController;
+use App\Http\Controllers\API\Api_TransaksiController;
 use App\Http\Controllers\API\AuthenticatedController;
 
 /*
@@ -21,6 +22,8 @@ use App\Http\Controllers\API\AuthenticatedController;
 Route::post('loginUser', [AuthenticatedController::class, 'loginUser']);
 
 Route::post('/refresh', [AuthenticatedController::class, 'refresh']);
+
+Route::get('/list-voucher', [Api_TransaksiController::class, 'list_voucher']);
 
 Route::get('/article', [Api_ArtikelController::class, 'article']);
 Route::get('/detail-article/{news_code}', [Api_ArtikelController::class, 'detail_article']);
